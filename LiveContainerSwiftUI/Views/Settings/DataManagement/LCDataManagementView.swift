@@ -137,7 +137,7 @@ struct LCDataManagementView : View {
                         if let result = sbextension.result {
                             Spacer()
                             Image(systemName: "checkmark.circle")
-                                .forgroundColor(result == true ? .green : .red)
+                                .foregroundColor(result == true ? .green : .red)
                         }
                     }
                 }
