@@ -122,9 +122,9 @@ struct LCDataManagementView : View {
             }
 
             Section {
-                Textfield("Extension Token", text: $sbextension.token)
+                TextField("Extension Token", text: $sbextension.token)
                 Button {
-                    let result = extendSBwithToken(sbextension.token)
+                    let result = LCUtils.extendSBwithToken(sbextension.token)
                     if result < 1 {
                         sbextension.result = false
                     } else {
@@ -133,7 +133,7 @@ struct LCDataManagementView : View {
                 } label: {
                     HStack {
                         Text("Extend Sandbox")
-                            .foregroundColor(result == true ? .secondary : .primary)
+                            .foregroundColor(sbextension.result == true ? .secondary : .primary)
                         if let result = sbextension.result {
                             Spacer()
                             Image(systemName: "checkmark.circle")
