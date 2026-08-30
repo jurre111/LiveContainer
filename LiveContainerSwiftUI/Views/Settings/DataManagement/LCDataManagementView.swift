@@ -29,6 +29,8 @@ struct LCDataManagementView : View {
     @State var errorInfo = ""
     @State var successShow = false
     @State var successInfo = ""
+
+    @State private var sbextension: (token: String, result: Bool?) = ("", nil)
     
     @EnvironmentObject private var sharedModel : SharedModel
     
@@ -117,6 +119,29 @@ struct LCDataManagementView : View {
                         .buttonStyle(.bordered)
                     }
                 }
+            }
+
+            Section {
+                Textfield("Extension Token", text: $sbextension.token)
+                Button {
+                    let result = extendSBwithToken(sbextension.token)
+                    if result < 1 {
+                        sbextension.result = false
+                    } else {
+                        sbextension.result = true
+                    }
+                } label: {
+                    HStack {
+                        Text("Extend Sandbox")
+                            .foregroundColor(result == true ? .secondary : .primary)
+                        if let result = sbextension.result {
+                            Spacer()
+                            Image(systemName: "checkmark.circle")
+                                .forgroundColor(result == true ? .green : .red)
+                        }
+                    }
+                }
+                .disabled(sbextension.result == true)
             }
         }
         .navigationTitle("lc.settings.dataManagement".loc)

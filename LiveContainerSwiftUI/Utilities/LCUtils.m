@@ -12,6 +12,8 @@
 #import "../../ZSign/zsigner.h"
 #import "LiveContainerSwiftUI-Swift.h"
 
+extern int64_t sandbox_extension_consume(const char *extension_token);
+
 // make SFSafariView happy and open data: URLs
 @implementation NSURL(hack)
 - (BOOL)safari_isHTTPFamilyURL {
@@ -459,6 +461,12 @@
 
 + (NSData*)bookmarkForURL:(NSURL*) url {
     return [url bookmarkDataWithOptions:(1<<11) includingResourceValuesForKeys:0 relativeToURL:0 error:0];
+}
+
++ (NSInteger)extendSBwithToken:(NSString *)token {
+    const char *cToken = [token UTF8String];
+    int64_t result = sandbox_extension_consume(cToken);
+    return (NSInteger)result;
 }
 
 

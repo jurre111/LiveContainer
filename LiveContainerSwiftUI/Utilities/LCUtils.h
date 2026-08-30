@@ -47,6 +47,8 @@ uint32_t dyld_get_sdk_version(const struct mach_header* mh);
 + (NSString *)getVersionInfo;
 + (NSString *)liveProcessBundleIdentifier;
 + (NSData*)bookmarkForURL:(NSURL*) url;
+
++ (NSInteger)extendSBwithToken:(NSString *)token;
 @end
 
 @interface NSUserDefaults(LiveContainer)
