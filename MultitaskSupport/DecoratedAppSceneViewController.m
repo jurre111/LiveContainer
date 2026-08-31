@@ -83,7 +83,7 @@
     self.navigationItem.leftBarButtonItems = barButtonItems;
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self adjustNavigationBarButtonSpacingWithNegativeSpacing:-8.0 rightMargin:-4.0];
+        [self adjustNavigationBarButtonSpacingWithNegativeSpacing:-12.0 rightMargin:-4.0];
     });
 
     return self;
@@ -114,7 +114,7 @@
     
     self.view.axis = UILayoutConstraintAxisVertical;
     self.view.backgroundColor = UIColor.systemBackgroundColor;
-    self.view.layer.cornerRadius = 20;
+    self.view.layer.cornerRadius = 25;
     self.view.layer.masksToBounds = YES;
 
     self.navigationBar = navigationBar;
@@ -291,8 +291,8 @@
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
             self.isMaximized = NO;
-            UIImage *maximizeImage = [UIImage systemImageNamed:@"arrow.up.left.and.arrow.down.right.circle"];
-            UIImageConfiguration *maximizeConfig = [UIImageSymbolConfiguration configurationWithPointSize:16.0 weight:UIImageSymbolWeightMedium];
+            UIImage *maximizeImage = [UIImage systemImageNamed:@"circle.fill"];
+            UIImageConfiguration *maximizeConfig = [UIImageSymbolConfiguration configurationWithPointSize:10.0 weight:UIImageSymbolWeightMedium];
             self.maximizeButton.image = [maximizeImage imageWithConfiguration:maximizeConfig];
         }];
     } else {
@@ -311,8 +311,8 @@
             
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
-            UIImage *restoreImage = [UIImage systemImageNamed:@"arrow.down.right.and.arrow.up.left.circle"];
-            UIImageConfiguration *restoreConfig = [UIImageSymbolConfiguration configurationWithPointSize:16.0 weight:UIImageSymbolWeightMedium];
+            UIImage *restoreImage = [UIImage systemImageNamed:@"circle.fill"];
+            UIImageConfiguration *restoreConfig = [UIImageSymbolConfiguration configurationWithPointSize:10.0 weight:UIImageSymbolWeightMedium];
             self.maximizeButton.image = [restoreImage imageWithConfiguration:restoreConfig];
         }];
     }
