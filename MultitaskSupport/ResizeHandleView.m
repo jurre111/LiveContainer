@@ -1,21 +1,35 @@
-//
-//  ResizeHandleView.m
-//  LiveContainer
-//
-//  Created by Duy Tran on 2/6/25.
-//
 #import "ResizeHandleView.h"
 
+// AI
 @implementation ResizeHandleView
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    self.layer.masksToBounds = YES;
-    self.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
-    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width*sqrt(2), frame.size.height*sqrt(2))];
-    backgroundView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.2];
-    backgroundView.center = CGPointMake(frame.size.width, frame.size.height);
-    backgroundView.transform = CGAffineTransformMakeRotation(M_PI_4);
-    [self addSubview:backgroundView];
+    if (self) {
+        self.backgroundColor = [UIColor clearColor];
+        self.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
+
+        CGFloat lineThickness = 3.0;
+        CGFloat cornerRadius = 12.0;
+        CGFloat margin = 6.0;
+
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        [path moveToPoint:CGPointMake(frame.size.width - margin - cornerRadius, frame.size.height - margin)];
+        [path addArcWithCenter:CGPointMake(frame.size.width - margin - cornerRadius, frame.size.height - margin - cornerRadius)
+                        radius:cornerRadius
+                    startAngle:M_PI_2
+                      endAngle:0
+                     clockwise:NO];
+
+        CAShapeLayer *handleLayer = [CAShapeLayer layer];
+        handleLayer.path = path.CGPath;
+        handleLayer.strokeColor = [UIColor colorWithWhite:0.0 alpha:0.45].CGColor;
+        handleLayer.fillColor = [UIColor clearColor].CGColor;
+        handleLayer.lineWidth = lineThickness;
+        handleLayer.lineCap = kCALayerLineCapRound;
+
+        [self.layer addSublayer:handleLayer];
+    }
     return self;
 }
+
 @end
