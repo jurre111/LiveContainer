@@ -115,6 +115,7 @@
     self.view.axis = UILayoutConstraintAxisVertical;
     self.view.backgroundColor = UIColor.systemBackgroundColor;
     self.view.layer.cornerRadius = 30;
+    self.view.layer.cornerCurve = kCACornerCurveContinuous;
     self.view.layer.masksToBounds = YES;
 
     self.navigationBar = navigationBar;
