@@ -431,6 +431,13 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     [self.view layoutIfNeeded];
     [UIView animateWithDuration:0.3 animations:^{
+        BOOL bottomWindowBar = [change[NSKeyValueChangeNewKey] boolValue];
+        if(bottomWindowBar) {
+            [self.view addArrangedSubview:self.navigationBar];
+        } else {
+            [self.view insertArrangedSubview:self.navigationBar atIndex:0];
+        }
+        
         [self updateVerticalConstraints];
         [self adjustNavigationBarButtonSpacingWithNegativeSpacing:-10.0 rightMargin:-4.0];
         
