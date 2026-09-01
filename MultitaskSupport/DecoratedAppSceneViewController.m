@@ -431,19 +431,8 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     [self.view layoutIfNeeded];
     [UIView animateWithDuration:0.3 animations:^{
-        BOOL bottomWindowBar = [change[NSKeyValueChangeNewKey] boolValue];
-        if(bottomWindowBar) {
-            self.navigationItem.leftBarButtonItems = self.navigationItem.rightBarButtonItems;
-            self.navigationItem.rightBarButtonItems = nil;
-            [self.view addArrangedSubview:self.navigationBar];
-        } else {
-            self.navigationItem.rightBarButtonItems = self.navigationItem.leftBarButtonItems;
-            self.navigationItem.leftBarButtonItems = nil;
-            [self.view insertArrangedSubview:self.navigationBar atIndex:0];
-        }
-        
         [self updateVerticalConstraints];
-        [self adjustNavigationBarButtonSpacingWithNegativeSpacing:-8.0 rightMargin:-4.0];
+        [self adjustNavigationBarButtonSpacingWithNegativeSpacing:-10.0 rightMargin:-4.0];
         
         if(_isMaximized) {
             [self.appSceneVC updateSettingsWithBlock:^(UIMutableApplicationSceneSettings *settings) {

@@ -19,7 +19,7 @@
     backgroundView.transform = CGAffineTransformMakeRotation(M_PI_4);
     [self addSubview:backgroundView];
 
-    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(10,10) radius:23 startAngle:9.0*M_PI/180.0 endAngle:81.0*M_PI/180.0 clockwise:YES];
+    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(10,10) radius:21 startAngle:9.0*M_PI/180.0 endAngle:81.0*M_PI/180.0 clockwise:YES];
     CAShapeLayer *layer = [CAShapeLayer layer];
     layer.path = path.CGPath;
     layer.strokeColor = [UIColor labelColor].CGColor;
