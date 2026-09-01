@@ -90,7 +90,7 @@
 }
 
 - (void)setupDecoratedView {
-    CGFloat navBarHeight = 44;
+    CGFloat navBarHeight = 32;
     BOOL isLandscape = UIInterfaceOrientationIsLandscape(UIApp.statusBarOrientation);
     CGRect frame = CGRectMake(0, 0, isLandscape ? 480 : 320, (isLandscape ? 320 : 480) + navBarHeight);
     CGPoint rootViewCenter = self.view.superview.center;
@@ -114,7 +114,7 @@
     
     self.view.axis = UILayoutConstraintAxisVertical;
     self.view.backgroundColor = UIColor.systemBackgroundColor;
-    self.view.layer.cornerRadius = 25;
+    self.view.layer.cornerRadius = 30;
     self.view.layer.masksToBounds = YES;
 
     self.navigationBar = navigationBar;
@@ -147,7 +147,7 @@
     UIPanGestureRecognizer *resizeGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(resizeWindow:)];
     resizeGesture.minimumNumberOfTouches = 1;
     resizeGesture.maximumNumberOfTouches = 1;
-    self.resizeHandle = [[ResizeHandleView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 25, self.view.frame.size.height - 25, 25, 25)];
+    self.resizeHandle = [[ResizeHandleView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 40, self.view.frame.size.height - 40, 40, 40)];
     self.resizeHandle.alpha = _isMaximized ? 0.0 : 1.0;
     [self.resizeHandle addGestureRecognizer:resizeGesture];
     [self.view addSubview:self.resizeHandle];
