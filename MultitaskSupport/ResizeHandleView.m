@@ -7,6 +7,7 @@
 #import "ResizeHandleView.h"
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import <math.h>
 
 @implementation ResizeHandleView
 - (instancetype)initWithFrame:(CGRect)frame {
