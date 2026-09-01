@@ -21,7 +21,7 @@
     layer.strokeColor = [UIColor labelColor].CGColor;
     layer.fillColor = [UIColor clearColor].CGColor;
     layer.lineWidth = 3.0;
-    layer.lineCap = kCALayerLineCapRound;
+    layer.lineCap = kCALineCapRound;
     [self.layer addSublayer:layer];
     return self;
 }
