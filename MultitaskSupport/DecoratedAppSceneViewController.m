@@ -60,22 +60,17 @@
         }
     }];
     
-    UIImage *minimizeImage = [UIImage systemImageNamed:@"circle.fill"];
-    UIImageConfiguration *minimizeConfig = [UIImageSymbolConfiguration configurationWithPointSize:10.0 weight:UIImageSymbolWeightMedium];
-    minimizeImage = [minimizeImage imageWithConfiguration:minimizeConfig];
-    UIBarButtonItem *minimizeButton = [[UIBarButtonItem alloc] initWithImage:minimizeImage style:UIBarButtonItemStylePlain target:self action:@selector(minimizeWindow)];
+    UIImage *image = [UIImage systemImageNamed:@"circle.fill"];
+    UIImageConfiguration *imageConfig = [UIImageSymbolConfiguration configurationWithPointSize:10.0 weight:UIImageSymbolWeightMedium];
+    image = [image imageWithConfiguration:imageConfig];
+    
+    UIBarButtonItem *minimizeButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(minimizeWindow)];
     minimizeButton.tintColor = [UIColor systemOrangeColor];
     
-    UIImage *maximizeImage = [UIImage systemImageNamed:@"circle.fill"];
-    UIImageConfiguration *maximizeConfig = [UIImageSymbolConfiguration configurationWithPointSize:10.0 weight:UIImageSymbolWeightMedium];
-    maximizeImage = [maximizeImage imageWithConfiguration:maximizeConfig];
-    self.maximizeButton = [[UIBarButtonItem alloc] initWithImage:maximizeImage style:UIBarButtonItemStylePlain target:self action:@selector(maximizeWindow)];
+    self.maximizeButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(maximizeWindow)];
     self.maximizeButton.tintColor = [UIColor systemGreenColor];
-    
-    UIImage *closeImage = [UIImage systemImageNamed:@"circle.fill"];
-    UIImageConfiguration *closeConfig = [UIImageSymbolConfiguration configurationWithPointSize:10.0 weight:UIImageSymbolWeightMedium];
-    closeImage = [closeImage imageWithConfiguration:closeConfig];
-    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithImage:closeImage style:UIBarButtonItemStylePlain target:self action:@selector(closeWindow)];
+
+    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(closeWindow)];
     closeButton.tintColor = [UIColor systemRedColor];
     
     NSArray *barButtonItems = @[closeButton, minimizeButton, self.maximizeButton];
